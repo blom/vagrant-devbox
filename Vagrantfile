@@ -5,8 +5,8 @@ Vagrant::Config.run do |config|
   config.vm.provision :shell, :path => "bootstrap.sh"
 
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "manifests"
+    puppet.manifests_path = "."
     puppet.module_path    = "modules"
-    puppet.manifest_file  = "init.pp"
+    puppet.manifest_file  = "bootstrap.pp"
   end
 end
