@@ -37,9 +37,9 @@ class packages {
   }
 
   exec { 'apt resync':
-    command => 'apt-get update',
-    require => File['/etc/apt/sources.list'],
-    unless  => 'ls /var/lib/apt/lists/mirrors.ubuntu.com_mirrors.txt_*',
+    command     => 'apt-get update',
+    subscribe   => File['/etc/apt/sources.list'],
+    refreshonly => true,
   }
 
   package { $packages:
