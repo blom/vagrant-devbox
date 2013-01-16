@@ -12,4 +12,5 @@ fi
 
 cd /vagrant
 
+rsync -a --delete modules-local/* modules
 librarian-puppet install
