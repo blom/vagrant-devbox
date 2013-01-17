@@ -6,8 +6,10 @@ FORGE
     puppetlabs/mysql (0.6.1)
       puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/stdlib (3.2.0)
+    saz/timezone (1.1.0)
 
 DEPENDENCIES
   puppetlabs/apt (>= 0)
   puppetlabs/mysql (>= 0)
+  saz/timezone (>= 0)
 

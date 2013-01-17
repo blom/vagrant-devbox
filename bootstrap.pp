@@ -27,3 +27,7 @@ file { '/home/vagrant/.my.cnf':
   mode    => '0600',
   content => "[client]\nuser=vagrant\npassword=vagrant\n"
 }
+
+class { 'timezone':
+  timezone => 'UTC',
+}
