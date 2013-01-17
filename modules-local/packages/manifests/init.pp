@@ -51,7 +51,7 @@ class packages {
     location   => 'http://apt.puppetlabs.com/',
     repos      => 'main',
     key        => '4BD6EC30',
-    key_server => 'pgp.mit.edu',
+    key_server => 'pool.sks-keyservers.net',
     require    => Package[$packages],
   }
 
