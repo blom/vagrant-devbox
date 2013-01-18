@@ -5,7 +5,7 @@ class packages {
     'bison',
     'build-essential',
     'curl',
-    'git',
+    'git-core',
     'gnupg',
     'libc6-dev',
     'libreadline6',
