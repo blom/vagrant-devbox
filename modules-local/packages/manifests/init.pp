@@ -30,10 +30,10 @@ class packages {
   Exec { path => [ '/bin', '/sbin' , '/usr/bin', '/usr/sbin' ] }
 
   file { '/etc/apt/sources.list':
-    ensure => present,
-    owner  => 'root',
-    group  => 'root',
-    source => 'puppet:///modules/packages/sources.list',
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    content => template('packages/sources.list.erb'),
   }
 
   exec { 'apt resync':
