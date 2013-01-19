@@ -9,7 +9,7 @@ Vagrant::Config.run do |config|
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "."
     puppet.manifest_file  = "bootstrap.pp"
-    puppet.module_path    = "modules"
+    puppet.module_path    = "puppet/modules"
 
     FileUtils.mkdir_p puppet.module_path
   end
