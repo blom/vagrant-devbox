@@ -1,3 +1,3 @@
 require "rake/clean"
 
-CLOBBER.include %w(.librarian .tmp modules)
+CLOBBER.include %w(.librarian .tmp puppet/modules)
