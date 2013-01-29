@@ -15,8 +15,6 @@ class packages {
     'libtool',
     'libxml2-dev',
     'libyaml-dev',
-    'nodejs',
-    'npm',
     'openjdk-6-jdk',
     'openssl',
     'pkg-config',
@@ -25,6 +23,11 @@ class packages {
     'vim',
     'zlib1g',
     'zlib1g-dev',
+  ]
+
+  $packages_post_lucid = [
+    'nodejs',
+    'npm',
   ]
 
   Exec { path => [ '/bin', '/sbin' , '/usr/bin', '/usr/sbin' ] }
@@ -45,6 +48,13 @@ class packages {
   package { $packages:
     ensure  => installed,
     require => Exec['apt resync'],
+  }
+
+  if $::lsbmajdistrelease > 10 {
+    package { $packages_post_lucid:
+      ensure  => installed,
+      require => Exec['apt resync'],
+    }
   }
 
   apt::source { 'puppetlabs':
