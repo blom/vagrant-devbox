@@ -1,5 +1,20 @@
 require "fileutils"
 
+BOXES = {
+  :lucid32 => {
+    :box_url => "http://files.vagrantup.com/lucid32.box",
+  },
+  :lucid64 => {
+    :box_url => "http://files.vagrantup.com/lucid64.box",
+  },
+  :precise32 => {
+    :box_url => "http://files.vagrantup.com/precise32.box",
+  },
+  :precise64 => {
+    :box_url => "http://files.vagrantup.com/precise64.box",
+  },
+}
+
 Vagrant::Config.run do |config|
   config.vm.provision :shell, :path => "bootstrap.sh"
 
@@ -11,15 +26,11 @@ Vagrant::Config.run do |config|
     FileUtils.mkdir_p puppet.module_path
   end
 
-  config.vm.define :lucid32 do |box|
-    box.vm.box       = "lucid32"
-    box.vm.host_name = "lucid32"
-    box.vm.box_url   = "http://files.vagrantup.com/lucid32.box"
-  end
-
-  config.vm.define :precise32 do |box|
-    box.vm.box       = "precise32"
-    box.vm.host_name = "precise32"
-    box.vm.box_url   = "http://files.vagrantup.com/precise32.box"
+  BOXES.each do |name, options|
+    config.vm.define name do |box|
+      box.vm.box       = options[:box] || name.to_s
+      box.vm.host_name = options[:host_name] || name.to_s
+      box.vm.box_url   = options[:box_url]
+    end
   end
 end
